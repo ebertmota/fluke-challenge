@@ -10,3 +10,7 @@ export const Container = styled.View`
 export const Image = styled.Image`
   margin-bottom: 20px;
 `;
+
+export const Title = styled.Text`
+  font-size: 20px;
+`;
