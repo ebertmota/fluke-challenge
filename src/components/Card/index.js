@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import ProgressCircle from 'react-native-progress-circle';
+import ProgressCircle from '../ProgressCircle';
 
 import {
   Container,
@@ -15,23 +15,31 @@ const Card = ({ subscription, available }) => {
   const [percent, setPercent] = useState(0);
 
   const calcPercent = useCallback(() => {
-    const total = (available / subscription) * 100;
-    setPercent(total);
+    const availablePercent = (available / subscription) * 100;
+    const consumedPercent = 100 - availablePercent;
+    const formattedConsumedPercent = Number((consumedPercent / 100).toFixed(4));
+
+    // console.tron.log(`ConsumedPercent ${formattedConsumedPercent}`);
+
+    setPercent(formattedConsumedPercent);
   }, [subscription, available]);
 
   useEffect(() => {
-    calcPercent();
-  });
+    if (subscription > 0 && available > 0) {
+      calcPercent();
+    }
+  }, [subscription, available, calcPercent]);
 
   return (
     <Container>
       <ProgressCircle
-        percent={percent}
-        radius={120}
-        borderWidth={8}
-        color="blue"
-        shadowColor="gray"
-        bgColor="#FFF"
+        value={percent}
+        size={220}
+        thickness={5}
+        color="#2b80ff"
+        unfilledColor="#f2f2f2"
+        animationMethod="spring"
+        animationConfig={{ speed: 4 }}
       >
         <AvailableContainer>
           <Title>{available}</Title>
