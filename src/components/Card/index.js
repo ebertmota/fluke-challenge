@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-// import CircularProgress from '../CircularProgress';
 import ProgressCircle from 'react-native-progress-circle';
 
 import {
