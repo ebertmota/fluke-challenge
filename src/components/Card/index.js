@@ -9,6 +9,7 @@ import {
   Description,
   Label,
   AvailableContainer,
+  BottomInformationText,
 } from './styles';
 
 const Card = ({ subscription, available }) => {
@@ -34,7 +35,7 @@ const Card = ({ subscription, available }) => {
     <Container>
       <ProgressCircle
         value={percent}
-        size={220}
+        size={200}
         thickness={5}
         color="#2b80ff"
         unfilledColor="#f2f2f2"
@@ -45,10 +46,9 @@ const Card = ({ subscription, available }) => {
           <Title>{available}</Title>
           <Label>gb</Label>
         </AvailableContainer>
-
         <Description>disponíveis</Description>
-        <Description>de {subscription} gb</Description>
       </ProgressCircle>
+      <BottomInformationText>de {subscription} gb</BottomInformationText>
     </Container>
   );
 };
