@@ -9,7 +9,14 @@ export const Container = styled.View`
   padding: 20px 10px;
 `;
 
-export const Description = styled.Text`
+export const TitleButton = styled.TouchableOpacity`
+  flex-direction: row;
+  align-items: center;
+  margin: 20px 0;
+`;
+
+export const TitleText = styled.Text`
+  margin-left: 8px;
   font-size: 20px;
 `;
 
@@ -21,7 +28,7 @@ export const WeekContainer = styled.ScrollView.attrs({
 
 export const WeekDay = styled.View`
   margin: 5px 0px;
-  border: 1px solid #2b80ff;
+  border: 1px solid #b9b9b9;
   background: #fff;
   padding: 20px;
   border-radius: 8px;
@@ -44,16 +51,33 @@ export const ConsumeText = styled.Text`
 
 export const Form = styled.View`
   margin-bottom: 50px;
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+
+  justify-content: center;
+`;
+
+export const DatePickerButton = styled.TouchableOpacity`
+  flex-direction: row;
+  align-items: center;
+  background: #fff;
+  margin: 10px 0;
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: 1px solid #b9b9b9;
 `;
 
 export const Label = styled.Text`
-  margin: 10px 0;
+  font-size: 16px;
+  margin: 10px 8px;
+  color: #666;
 `;
 
 export const Button = styled(RectButton)`
   background: #2b80ff;
-  max-width: 300px;
-  margin: 10px 0;
+  width: 100%;
+  margin: 10px auto;
   padding: 15px;
   border-radius: 8px;
   align-items: center;

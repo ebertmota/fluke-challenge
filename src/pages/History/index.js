@@ -1,14 +1,18 @@
-import React, { useEffect, useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { format, parseISO } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
+
 import { ProgressBar } from 'react-native-paper';
-import DatePicker from 'react-native-datepicker';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import api from '../../services/api';
 
 import formatBytes from '../../utils/formatBytes';
 
 import {
   Container,
-  Description,
+  TitleButton,
+  TitleText,
   WeekContainer,
   WeekDay,
   WeekDayText,
@@ -18,16 +22,21 @@ import {
   Label,
   Button,
   ButtonText,
+  DatePickerButton,
 } from './styles';
 
 const History = () => {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
-  const [consumedDays, setConsumedDays] = useState([]);
 
-  useEffect(() => {
-    loadConsumedDays();
-  });
+  const [startPicker, setStartPicker] = useState(false);
+  const [endPicker, setEndPicker] = useState(false);
+  const [consumedDays, setConsumedDays] = useState([]);
+  const [formIsVisible, setFormIsVisible] = useState(false);
+
+  // const loadConsumedDays = useCallback(async () => {
+
+  // }, [startDate, endDate]);
 
   const loadConsumedDays = useCallback(async () => {
     const response = await api.get('/usage/records/', {
@@ -38,51 +47,84 @@ const History = () => {
     });
 
     setConsumedDays(response.data);
+    setFormIsVisible(false);
   }, [startDate, endDate]);
+
+  const handleFormVisibility = useCallback(() => {
+    setFormIsVisible(!formIsVisible);
+  }, [formIsVisible]);
+
+  const formatDate = useCallback(date => {
+    const formated = parseISO(date);
+    const result = format(formated, "'Dia' dd 'de' MMMM 'de' yyyy", {
+      locale: ptBR,
+    });
+
+    return result;
+  }, []);
 
   return (
     <Container>
-      <Form>
-        <Description>Busque por dias personalizados</Description>
-        <Label>Dia inicial</Label>
-        <DatePicker
-          date={startDate}
-          mode="date"
-          style={{ width: 300 }}
-          showIcon={false}
-          placeholder="Selecione a data inicial"
-          onDateChange={date => setStartDate(date)}
-          customStyles={{
-            dateInput: {
-              borderRadius: 5,
-            },
-          }}
-        />
+      <TitleButton onPress={handleFormVisibility}>
+        <Icon name="search" size={18} />
+        <TitleText>Busque por dias personalizados</TitleText>
+      </TitleButton>
 
-        <Label>Dia final</Label>
-        <DatePicker
-          date={endDate}
-          mode="date"
-          style={{ width: 300 }}
-          placeholder="Selecione a data final"
-          onDateChange={date => setEndDate(date)}
-          showIcon={false}
-          customStyles={{
-            dateInput: {
-              borderRadius: 5,
-            },
-          }}
-        />
+      {formIsVisible && (
+        <Form>
+          <DatePickerButton onPress={() => setStartPicker(true)}>
+            <Icon name="calendar" size={20} />
 
-        <Button>
-          <ButtonText onPress={loadConsumedDays}>Buscar</ButtonText>
-        </Button>
-      </Form>
+            {startDate !== undefined ? (
+              <Label>{formatDate(startDate)}</Label>
+            ) : (
+              <Label>Dia inicial</Label>
+            )}
+          </DatePickerButton>
+
+          {startPicker && (
+            <DateTimePicker
+              testID="startDatePicker"
+              value={new Date()}
+              mode="date"
+              display="default"
+              locale="pt-br"
+              onChange={(event, date) =>
+                setStartDate(format(date, 'yyyy-MM-dd'))
+              }
+            />
+          )}
+
+          <DatePickerButton onPress={() => setEndPicker(true)}>
+            <Icon name="calendar" size={20} />
+
+            {endDate !== undefined ? (
+              <Label>{formatDate(endDate)}</Label>
+            ) : (
+              <Label>Dia Final</Label>
+            )}
+          </DatePickerButton>
+          {endPicker && (
+            <DateTimePicker
+              testID="endDatePicker"
+              value={new Date()}
+              mode="date"
+              is24Hour
+              display="default"
+              onChange={(event, date) => setEndDate(format(date, 'yyyy-MM-dd'))}
+            />
+          )}
+
+          <Button>
+            <ButtonText onPress={loadConsumedDays}>Buscar</ButtonText>
+          </Button>
+        </Form>
+      )}
 
       <WeekContainer>
         {consumedDays.map(day => (
           <WeekDay key={day.date}>
-            <WeekDayText>{day.date}</WeekDayText>
+            <WeekDayText>{formatDate(day.date)}</WeekDayText>
             <ProgressBar progress={0.5} color="#2b80ff" />
 
             <Consume>
