@@ -8,9 +8,15 @@ export const Container = styled.View`
 `;
 
 export const Image = styled.Image`
-  margin-bottom: 20px;
+  margin-bottom: 55px;
 `;
 
-export const Title = styled.Text`
-  font-size: 20px;
+export const TitleContainer = styled.View`
+  width: 80%;
+`;
+
+export const TitleText = styled.Text`
+  font-family: Quicksand-Regular;
+  font-size: 22px;
+  text-align: left;
 `;

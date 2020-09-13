@@ -7,7 +7,7 @@ import logo from '../../assets/logo.png';
 
 import Card from '../../components/Card';
 
-import { Container, Image, Title } from './styles';
+import { Container, Image, TitleContainer, TitleText } from './styles';
 
 const Home = () => {
   const [subscriptionData, setSubscriptionData] = useState(0);
@@ -31,7 +31,9 @@ const Home = () => {
   return (
     <Container>
       <Image source={logo} />
-      <Title>meus dados</Title>
+      <TitleContainer>
+        <TitleText>meus dados</TitleText>
+      </TitleContainer>
 
       <Card subscription={subscriptionData} available={availableData} />
     </Container>

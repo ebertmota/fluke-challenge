@@ -32,6 +32,11 @@
 		26F0B03B78E54AD8BBC54DD9 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F67F7B4A89CC44C380C91C30 /* Octicons.ttf */; };
 		39849011286142208EC95311 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5B135B7DA7146BCBD81F5DF /* SimpleLineIcons.ttf */; };
 		25B2AEB4B8254AF6A85419D0 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 417F7FE4FE9D4B959155A555 /* Zocial.ttf */; };
+		8B6C280C1FA34955A0EE09D5 /* Quicksand-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E552B5A3DAAE42F388EC5E0F /* Quicksand-Medium.ttf */; };
+		DCECB708149F409DA4503A2C /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F80825071EB34F598B615F25 /* Quicksand-Regular.ttf */; };
+		F01758C34E5B41E984F5E113 /* Quicksand-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 892C2D797B204B1390165365 /* Quicksand-SemiBold.ttf */; };
+		7AE1E2868FA240F3BD98F39E /* RobotoSlab-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90028BEA70F84D6EB442ED17 /* RobotoSlab-Medium.ttf */; };
+		3A342C4B5F674C1FAC9043AE /* RobotoSlab-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03E973AACE4141F795E55227 /* RobotoSlab-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +88,11 @@
 		F67F7B4A89CC44C380C91C30 /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		E5B135B7DA7146BCBD81F5DF /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		417F7FE4FE9D4B959155A555 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E552B5A3DAAE42F388EC5E0F /* Quicksand-Medium.ttf */ = {isa = PBXFileReference; name = "Quicksand-Medium.ttf"; path = "../assets/fonts/Quicksand-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F80825071EB34F598B615F25 /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; name = "Quicksand-Regular.ttf"; path = "../assets/fonts/Quicksand-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		892C2D797B204B1390165365 /* Quicksand-SemiBold.ttf */ = {isa = PBXFileReference; name = "Quicksand-SemiBold.ttf"; path = "../assets/fonts/Quicksand-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		90028BEA70F84D6EB442ED17 /* RobotoSlab-Medium.ttf */ = {isa = PBXFileReference; name = "RobotoSlab-Medium.ttf"; path = "../assets/fonts/RobotoSlab-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		03E973AACE4141F795E55227 /* RobotoSlab-Regular.ttf */ = {isa = PBXFileReference; name = "RobotoSlab-Regular.ttf"; path = "../assets/fonts/RobotoSlab-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +219,11 @@
 				F67F7B4A89CC44C380C91C30 /* Octicons.ttf */,
 				E5B135B7DA7146BCBD81F5DF /* SimpleLineIcons.ttf */,
 				417F7FE4FE9D4B959155A555 /* Zocial.ttf */,
+				E552B5A3DAAE42F388EC5E0F /* Quicksand-Medium.ttf */,
+				F80825071EB34F598B615F25 /* Quicksand-Regular.ttf */,
+				892C2D797B204B1390165365 /* Quicksand-SemiBold.ttf */,
+				90028BEA70F84D6EB442ED17 /* RobotoSlab-Medium.ttf */,
+				03E973AACE4141F795E55227 /* RobotoSlab-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -368,6 +383,11 @@
 				26F0B03B78E54AD8BBC54DD9 /* Octicons.ttf in Resources */,
 				39849011286142208EC95311 /* SimpleLineIcons.ttf in Resources */,
 				25B2AEB4B8254AF6A85419D0 /* Zocial.ttf in Resources */,
+				8B6C280C1FA34955A0EE09D5 /* Quicksand-Medium.ttf in Resources */,
+				DCECB708149F409DA4503A2C /* Quicksand-Regular.ttf in Resources */,
+				F01758C34E5B41E984F5E113 /* Quicksand-SemiBold.ttf in Resources */,
+				7AE1E2868FA240F3BD98F39E /* RobotoSlab-Medium.ttf in Resources */,
+				3A342C4B5F674C1FAC9043AE /* RobotoSlab-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

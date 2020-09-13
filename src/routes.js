@@ -15,6 +15,7 @@ const Routes = () => {
     <NavigationContainer>
       <Navigator
         initialRouteName="Home"
+        animation="fade"
         tabBarOptions={{
           style: {
             elevation: 0,
@@ -36,7 +37,7 @@ const Routes = () => {
             fontSize: 13,
             marginTop: 5,
           },
-          activeTintColor: '#1DA1F2',
+          activeTintColor: '#2b80ff',
           inactiveTintColor: 'gray',
         }}
       >
@@ -49,7 +50,7 @@ const Routes = () => {
                 <Icon
                   name="history"
                   size={size}
-                  color={focused ? '#1DA1F2' : 'gray'}
+                  color={focused ? '#2b80ff' : 'gray'}
                 />
               );
             },
@@ -64,7 +65,7 @@ const Routes = () => {
                 <Icon
                   name="home"
                   size={size}
-                  color={focused ? '#1DA1F2' : 'gray'}
+                  color={focused ? '#2b80ff' : 'gray'}
                 />
               );
             },
@@ -79,7 +80,7 @@ const Routes = () => {
                 <Icon
                   name="help"
                   size={size}
-                  color={focused ? '#1DA1F2' : 'gray'}
+                  color={focused ? '#2b80ff' : 'gray'}
                 />
               );
             },
