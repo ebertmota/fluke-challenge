@@ -60,6 +60,39 @@ Se estiver usando o npm
 ```
 
 ## :bulb: Tecnologias Utilizadas
+ 
+ * React Native
+ * Styled-components
+ * Reactotron
+
+
+## Uso do Aplicativo
+
+O App é divido em 3 telas Início, Histórico e Ajuda, sendo assim vamos listar seu uso separadamente.
+
+### Início
+Na tela principal você visualiza a quantidade de Gigas disponível na fluke e seu consumo atual. Esses dados são retornados na requisição:
+
+```
+GET - https://flukenator.herokuapp.com/usage/packageInformation/
+```
+
+Além disso temos um um círculo que representa o consumo total de seus dados, ou seja o progresso estára cheio quando você não tiver dados disponíveis.
+
+
+### Histórico
+Nessa tela você visualiza a quantidade de Gigas consumidos em uma faixa de tempo. Por padrão essa faixa é de 7 dias e o histórico nesse periodo é carregado automaticamente sempre que você inicia o App.
+Você também pode filtrar por dias personalizados, passando o dia inicial e final do periodo desejado.
+
+```
+GET - https://flukenator.herokuapp.com/usage/records/?startDate=2020-08-01&endDate=2020-08-03
+```
+
+### Ajuda
+No painel de ajuda você pode entrar em contato com o suporte da fluke via E-mail, ou Whatsapp. Os dois botões irão te redirecionar para o meio de comunicação com o uso do <a href="https://en.wikipedia.org/wiki/Deep_linking">Deep Linking</a>.
+
+Você também pode visualizar as dúvidas frequentes sobre o aplicativo Fluke.
+
 
 <br/>
 
