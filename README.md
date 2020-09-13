@@ -57,3 +57,8 @@ Se estiver usando o npm
 ```sh
   npm run start
 ```
+<br/>
+
+
+---
+Feito com :blue_heart: by Ebert Mota
