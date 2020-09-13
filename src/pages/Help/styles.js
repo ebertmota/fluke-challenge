@@ -1,6 +1,8 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.ScrollView`
+export const Container = styled.ScrollView.attrs({
+  showsVerticalScrollIndicator: false,
+})`
   flex: 1;
   background: #fff;
 `;
@@ -11,6 +13,7 @@ export const Content = styled.View`
 `;
 
 export const Title = styled.Text`
+  font-family: Quicksand-Regular;
   font-size: 24px;
   margin-bottom: 20px;
   padding: 5px 0;
@@ -26,10 +29,12 @@ export const QuestionBlock = styled.View`
   margin: 20px 0;
 `;
 export const QuestionTitle = styled.Text`
+  font-family: Quicksand-Regular;
   color: #222;
   font-size: 18px;
 `;
 export const AnswerText = styled.Text`
+  font-family: Quicksand-Regular;
   margin: 10px 0;
   background: #f1f1f1;
   padding: 8px;
@@ -40,11 +45,13 @@ export const AnswerText = styled.Text`
 `;
 
 export const Link = styled.Text`
+  font-family: Quicksand-Medium;
   text-decoration: underline;
   color: #2b80ff;
 `;
 
 export const ContactText = styled.Text`
+  font-family: Quicksand-Medium;
   width: 100%;
   font-size: 32px;
   padding: 20px;
@@ -68,6 +75,7 @@ export const Button = styled.TouchableOpacity`
 `;
 
 export const ButtonText = styled.Text`
+  font-family: Quicksand-Regular;
   color: #fff;
   margin-left: 10px;
 `;

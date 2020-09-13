@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
+import { Alert, Linking } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import { Linking } from 'react-native';
 
 import {
   Container,
@@ -28,7 +28,12 @@ const Help = () => {
   }, []);
 
   const handleWhatsapp = useCallback(() => {
-    Linking.openURL(`whatsapp://send?phone=5516936180000`);
+    Linking.openURL(`whatsapp://send?phone=5516936180000`).catch(err => {
+      Alert.alert(
+        'Ops...',
+        'Parece que você não tem o Whatsapp instalado em seu dispositivo.',
+      );
+    });
   }, []);
   return (
     <Container>

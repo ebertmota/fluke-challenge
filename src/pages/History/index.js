@@ -1,10 +1,9 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { format, parseISO } from 'date-fns';
+import { format, parseISO, startOfYesterday } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 
-import { ProgressBar } from 'react-native-paper';
-import DateTimePicker from '@react-native-community/datetimepicker';
+import DateTimePicker from 'react-native-modal-datetime-picker';
 import api from '../../services/api';
 
 import formatBytes from '../../utils/formatBytes';
@@ -14,40 +13,52 @@ import {
   TitleButton,
   TitleText,
   WeekContainer,
+  WeekContent,
   WeekDay,
   WeekDayText,
   Consume,
   ConsumeText,
+  ErrorContainer,
+  ErrorText,
   Form,
   Label,
   Button,
   ButtonText,
   DatePickerButton,
+  Loading,
 } from './styles';
 
 const History = () => {
-  const [startDate, setStartDate] = useState();
-  const [endDate, setEndDate] = useState();
-
-  const [startPicker, setStartPicker] = useState(false);
-  const [endPicker, setEndPicker] = useState(false);
+  const [startDate, setStartDate] = useState(() => {
+    const lastWeek = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+    return format(lastWeek, 'yyy-MM-dd');
+  });
+  const [endDate, setEndDate] = useState(() => {
+    const today = new Date();
+    return format(today, 'yyy-MM-dd');
+  });
   const [consumedDays, setConsumedDays] = useState([]);
-  const [formIsVisible, setFormIsVisible] = useState(false);
 
-  // const loadConsumedDays = useCallback(async () => {
-
-  // }, [startDate, endDate]);
+  const [loading, setLoading] = useState(false);
+  const [startPickerVisible, setStartPickerVisible] = useState(false);
+  const [endPickerVisible, setEndPickerVisible] = useState(false);
+  const [formIsVisible, setFormIsVisible] = useState(true);
 
   const loadConsumedDays = useCallback(async () => {
+    setLoading(true);
+
     const response = await api.get('/usage/records/', {
       params: {
-        startDate: String(startDate),
-        endDate: String(endDate),
+        startDate,
+        endDate,
       },
     });
 
     setConsumedDays(response.data);
-    setFormIsVisible(false);
+    setLoading(false);
+    if (response.data.length > 0) {
+      setFormIsVisible(false);
+    }
   }, [startDate, endDate]);
 
   const handleFormVisibility = useCallback(() => {
@@ -63,6 +74,22 @@ const History = () => {
     return result;
   }, []);
 
+  // load consumed data in the last 7 days
+  useEffect(() => {
+    loadConsumedDays();
+  }, []); /* eslint-disable-line */
+
+  const handleStartDateConfirm = useCallback(date => {
+    setStartDate(format(date, 'yyyy-MM-dd'));
+
+    setStartPickerVisible(false);
+  }, []);
+
+  const handleEndDateConfirm = useCallback(date => {
+    setEndDate(format(date, 'yyy-MM-dd'));
+    setEndPickerVisible(false);
+  }, []);
+
   return (
     <Container>
       <TitleButton onPress={handleFormVisibility}>
@@ -72,7 +99,7 @@ const History = () => {
 
       {formIsVisible && (
         <Form>
-          <DatePickerButton onPress={() => setStartPicker(true)}>
+          <DatePickerButton onPress={() => setStartPickerVisible(true)}>
             <Icon name="calendar" size={20} />
 
             {startDate !== undefined ? (
@@ -82,20 +109,19 @@ const History = () => {
             )}
           </DatePickerButton>
 
-          {startPicker && (
+          {startPickerVisible && (
             <DateTimePicker
-              testID="startDatePicker"
-              value={new Date()}
+              isVisible={startPickerVisible}
+              minimumDate={new Date(2020, 1, 28)}
+              maximumDate={new Date(2020, 7, 21)}
               mode="date"
-              display="default"
-              locale="pt-br"
-              onChange={(event, date) =>
-                setStartDate(format(date, 'yyyy-MM-dd'))
-              }
+              locale="pt_BR"
+              onConfirm={handleStartDateConfirm}
+              onCancel={() => setStartPickerVisible(false)}
             />
           )}
 
-          <DatePickerButton onPress={() => setEndPicker(true)}>
+          <DatePickerButton onPress={() => setEndPickerVisible(true)}>
             <Icon name="calendar" size={20} />
 
             {endDate !== undefined ? (
@@ -104,14 +130,15 @@ const History = () => {
               <Label>Dia Final</Label>
             )}
           </DatePickerButton>
-          {endPicker && (
+          {endPickerVisible && (
             <DateTimePicker
-              testID="endDatePicker"
-              value={new Date()}
+              isVisible={endPickerVisible}
+              minimumDate={new Date(2020, 1, 28)}
+              maximumDate={new Date(2020, 7, 21)}
               mode="date"
-              is24Hour
-              display="default"
-              onChange={(event, date) => setEndDate(format(date, 'yyyy-MM-dd'))}
+              locale="pt_BR"
+              onConfirm={handleEndDateConfirm}
+              onCancel={() => setEndPickerVisible(false)}
             />
           )}
 
@@ -122,22 +149,31 @@ const History = () => {
       )}
 
       <WeekContainer>
-        {consumedDays.map(day => (
-          <WeekDay key={day.date}>
-            <WeekDayText>{formatDate(day.date)}</WeekDayText>
-            <ProgressBar progress={0.5} color="#2b80ff" />
+        <WeekContent>
+          {loading && <Loading size="large" color="#555" />}
+          {consumedDays.length === 0 && !loading ? (
+            <ErrorContainer>
+              <Icon name="exclamation-circle" size={40} color="#555" />
+              <ErrorText>Nenhum registro encontrado.</ErrorText>
+            </ErrorContainer>
+          ) : (
+            consumedDays.map(day => (
+              <WeekDay key={day.date}>
+                <WeekDayText>{formatDate(day.date)}</WeekDayText>
 
-            <Consume>
-              <Icon name="phone" size={20} />
-              <ConsumeText>{day.voice} segundos</ConsumeText>
-            </Consume>
+                <Consume>
+                  <Icon name="phone" size={20} />
+                  <ConsumeText>{day.voice} segundos</ConsumeText>
+                </Consume>
 
-            <Consume>
-              <Icon name="signal" size={20} />
-              <ConsumeText>{formatBytes(day.data)} MB</ConsumeText>
-            </Consume>
-          </WeekDay>
-        ))}
+                <Consume>
+                  <Icon name="signal" size={20} />
+                  <ConsumeText>{formatBytes(day.data)} MB</ConsumeText>
+                </Consume>
+              </WeekDay>
+            ))
+          )}
+        </WeekContent>
       </WeekContainer>
     </Container>
   );

@@ -9,6 +9,8 @@ export const Container = styled.View`
   padding: 20px 10px;
 `;
 
+export const Loading = styled.ActivityIndicator``;
+
 export const TitleButton = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
@@ -26,7 +28,13 @@ export const WeekContainer = styled.ScrollView.attrs({
   width: 100%;
 `;
 
+export const WeekContent = styled.View`
+  align-items: center;
+  justify-content: center;
+`;
+
 export const WeekDay = styled.View`
+  width: 95%;
   margin: 5px 0px;
   border: 1px solid #b9b9b9;
   background: #fff;
@@ -47,6 +55,20 @@ export const Consume = styled.View`
 
 export const ConsumeText = styled.Text`
   margin-left: 10px;
+`;
+
+export const ErrorContainer = styled.View`
+  margin-top: 20px;
+  height: 100%;
+  align-items: center;
+`;
+
+export const ErrorText = styled.Text`
+  font-family: Quicksand-Regular;
+  font-size: 18px;
+  width: 70%;
+  margin-top: 20px;
+  margin-left: 15px;
 `;
 
 export const Form = styled.View`
@@ -84,5 +106,8 @@ export const Button = styled(RectButton)`
 `;
 
 export const ButtonText = styled.Text`
+  width: 100%;
+  text-align: center;
+  font-family: Quicksand-Regular;
   color: #fff;
 `;

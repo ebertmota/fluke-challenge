@@ -8,7 +8,9 @@ export const Container = styled.View`
 `;
 
 export const Image = styled.Image`
-  margin-bottom: 55px;
+  width: 29%;
+  height: 10%;
+  margin-bottom: 25px;
 `;
 
 export const TitleContainer = styled.View`

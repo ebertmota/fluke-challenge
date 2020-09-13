@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -14,7 +15,7 @@ const Routes = () => {
   return (
     <NavigationContainer>
       <Navigator
-        initialRouteName="Home"
+        initialRouteName="Início"
         animation="fade"
         tabBarOptions={{
           style: {
@@ -42,7 +43,7 @@ const Routes = () => {
         }}
       >
         <Screen
-          name="History"
+          name="Histórico"
           component={History}
           options={{
             tabBarIcon: ({ color, size, focused }) => {
@@ -57,7 +58,7 @@ const Routes = () => {
           }}
         />
         <Screen
-          name="Home"
+          name="Início"
           component={Home}
           options={{
             tabBarIcon: ({ color, size, focused }) => {
@@ -72,7 +73,7 @@ const Routes = () => {
           }}
         />
         <Screen
-          name="Help"
+          name="Ajuda"
           component={Help}
           options={{
             tabBarIcon: ({ color, size, focused }) => {
@@ -89,6 +90,12 @@ const Routes = () => {
       </Navigator>
     </NavigationContainer>
   );
+};
+
+Routes.propTypes = {
+  color: PropTypes.any.isRequired,
+  size: PropTypes.any.isRequired,
+  focused: PropTypes.any.isRequired,
 };
 
 export default Routes;
