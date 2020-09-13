@@ -89,7 +89,7 @@ GET - https://flukenator.herokuapp.com/usage/records/?startDate=2020-08-01&endDa
 ```
 
 ### Ajuda
-No painel de ajuda você pode entrar em contato com o suporte da fluke via E-mail, ou Whatsapp. Os dois botões irão te redirecionar para o meio de comunicação com o uso do <a href="https://en.wikipedia.org/wiki/Deep_linking">Deep Linking</a>.
+No painel de ajuda você pode entrar em contato com o suporte da fluke via E-mail, ou Whatsapp. Os dois botões irão te redirecionar para o app específico do meio de comunicação com o uso do <a href="https://en.wikipedia.org/wiki/Deep_linking">Deep Linking</a>.
 
 Você também pode visualizar as dúvidas frequentes sobre o aplicativo Fluke.
 
