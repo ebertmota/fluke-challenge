@@ -68,7 +68,7 @@ Se estiver usando o npm
 
 ## Uso do Aplicativo
 
-O App é divido em 3 telas Início, Histórico e Ajuda, sendo assim vamos listar seu uso separadamente.
+O App é dividido em 3 telas Início, Histórico e Ajuda, sendo assim vamos listar seu uso separadamente.
 
 ### Início
 Na tela principal você visualiza a quantidade de Gigas disponível na fluke e seu consumo atual. Esses dados são retornados na requisição:
