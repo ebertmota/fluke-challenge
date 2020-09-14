@@ -59,7 +59,7 @@ Se estiver usando o npm
   npm run start
 ```
 
-## :bulb: Tecnologias e sua utilização
+## :bulb: Tecnologias 
  
  * Axios para comunicação com a api.
  * Styled-components para usarmos estilos como componentes, tendo um maior controle sobre o seu escopo.
