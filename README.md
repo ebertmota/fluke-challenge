@@ -59,11 +59,13 @@ Se estiver usando o npm
   npm run start
 ```
 
-## :bulb: Tecnologias Utilizadas
+## :bulb: Tecnologias e sua utilização
  
- * React Native
- * Styled-components
- * Reactotron
+ * Axios para comunicação com a api.
+ * Styled-components para usarmos estilos como componentes, tendo um maior controle sobre o seu escopo.
+ * Reactotron para facilitar no debug durante o desenvolvimento
+ * Eslint e Prettier para o linting e padronização do projeto.
+ * react-navigation para o controle de rotas.
 
 
 ## Uso do Aplicativo
@@ -77,7 +79,7 @@ Na tela principal você visualiza a quantidade de Gigas disponível na fluke e s
 GET - https://flukenator.herokuapp.com/usage/packageInformation/
 ```
 
-Além disso temos um um círculo que representa o consumo total de seus dados, ou seja o progresso estára cheio quando você não tiver dados disponíveis.
+Além disso temos um um círculo que representa o consumo total de seus dados, ou seja o progresso estará cheio quando você não tiver dados disponíveis.
 
 
 ### Histórico
