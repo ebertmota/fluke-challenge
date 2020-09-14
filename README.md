@@ -100,4 +100,4 @@ Você também pode visualizar as dúvidas frequentes sobre o aplicativo Fluke.
 
 
 ---
-Feito com :blue_heart: by Ebert Mota
+Made with :blue_heart: by Ebert Mota
