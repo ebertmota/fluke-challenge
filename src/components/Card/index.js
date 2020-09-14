@@ -20,8 +20,6 @@ const Card = ({ subscription, available }) => {
     const consumedPercent = 100 - availablePercent;
     const formattedConsumedPercent = Number((consumedPercent / 100).toFixed(4));
 
-    // console.tron.log(`ConsumedPercent ${formattedConsumedPercent}`);
-
     setPercent(formattedConsumedPercent);
   }, [subscription, available]);
 

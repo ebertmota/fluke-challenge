@@ -35,6 +35,7 @@ const Help = () => {
       );
     });
   }, []);
+
   return (
     <Container>
       <Content>

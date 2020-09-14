@@ -92,10 +92,4 @@ const Routes = () => {
   );
 };
 
-Routes.propTypes = {
-  color: PropTypes.any.isRequired,
-  size: PropTypes.any.isRequired,
-  focused: PropTypes.any.isRequired,
-};
-
 export default Routes;
